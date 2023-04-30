@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "957535237440",
+    "project_id": "pustakapooja2",
+    "storage_bucket": "pustakapooja2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957535237440:android:029fdc47f4dce03aa9b6a5",
+        "android_client_info": {
+          "package_name": "com.example.pustakapooja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957535237440-ek1m0mk2cgm60ch2rtfgqmn25a0g7l1a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pustakapooja",
+            "certificate_hash": "82f060830ce43e95521ce889fc76468b401c0e5e"
+          }
+        },
+        {
+          "client_id": "957535237440-307va7cjq511d5661ra2dcbgtdf8ae82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6jTVBJvT37836tVjhqPQiawXRUiTDm9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957535237440-307va7cjq511d5661ra2dcbgtdf8ae82.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

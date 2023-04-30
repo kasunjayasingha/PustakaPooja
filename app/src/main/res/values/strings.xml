@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PustakaPooja</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="new_user_click_register">New user? Click <b>Register</b></string>
+</resources>
