@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.pustakapooja.admin.CategoryActivity;
 import com.example.pustakapooja.databinding.ActivityDashboardAdminBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +31,15 @@ public class DashboardAdminActivity extends AppCompatActivity {
                 checkUser();
             }
         });
+        //Add Category button
+        binding.categoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DashboardAdminActivity.this, CategoryActivity.class));
+                finish();
+            }
+        });
+
     }
 
     private void checkUser() {
