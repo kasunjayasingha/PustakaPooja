@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
@@ -48,6 +50,31 @@ public class CategoryActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please Wait");
         progressDialog.setCanceledOnTouchOutside(false);
+
+        //search
+        binding.CategoryEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Called as and when user type each letter
+                try {
+                    adapterCategory.getFilter().filter(charSequence);
+                }
+                catch (Exception e){
+
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         binding.addCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override

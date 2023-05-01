@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,16 +23,19 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.HolderCategory> {
+public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.HolderCategory> implements Filterable {
 
     private Context context;
-    private ArrayList<ModelCategory> categoryArrayList;
+    public ArrayList<ModelCategory> categoryArrayList, filterList;
 
     private RowCategoryBinding binding;
+    //instance ogf our filter class
+    private FilterCategory filter;
 
     public AdapterCategory(Context context, ArrayList<ModelCategory> categoryArrayList) {
         this.context = context;
         this.categoryArrayList = categoryArrayList;
+        this.filterList = categoryArrayList;
     }
 
     @NonNull
@@ -109,6 +114,14 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Holder
     @Override
     public int getItemCount() {
         return categoryArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        if(filter == null){
+            filter = new FilterCategory(filterList, this);
+        }
+        return filter;
     }
 
     //view holder class to hold UI view for row_category.xml
