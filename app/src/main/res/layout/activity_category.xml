@@ -38,7 +38,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Add a new Category"
+            android:text="Add Category"
             android:textColor="@color/white"
             android:textSize="28sp"/>
     </RelativeLayout>
@@ -58,6 +58,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_edittext01"
             android:drawableStart="@drawable/ic_category_white"
+            android:drawableEnd="@drawable/ic_search_gray"
+            android:hint="Category"
             android:drawablePadding="10dp"
             android:inputType="textPersonName|textCapWords"
             android:padding="10dp"
@@ -67,19 +69,45 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 <!--    Add Category Button-->
-    <Button
-        android:id="@+id/addCategoryBtn"
+    <LinearLayout
+        android:id="@+id/buttonLl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shape_button01"
-        android:text="Add"
-        android:layout_below="@id/categoryTil"
-        android:textColor="@color/white"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/categoryTil">
+        <Button
+            android:id="@+id/addCategoryBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/shape_button01"
+            android:text="Add"
+            android:textColor="@color/white"/>
+        <Button
+            android:id="@+id/searchCategoryBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/shape_button01"
+            android:text="Search"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
 
+<!--    Categories-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categariesRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/row_category"
+        android:layout_below="@id/buttonLl"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+       />
 
 
 </RelativeLayout>

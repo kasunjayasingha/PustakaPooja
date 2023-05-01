@@ -4,19 +4,25 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.pustakapooja.DashboardAdminActivity;
 import com.example.pustakapooja.R;
 import com.example.pustakapooja.databinding.ActivityCategoryBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CategoryActivity extends AppCompatActivity {
@@ -25,6 +31,11 @@ public class CategoryActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
 
+    //arrayList to store category
+    private ArrayList<ModelCategory> categoryArrayList;
+    //adpter
+    private AdapterCategory adapterCategory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +43,7 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
+        loadCategory();
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please Wait");
@@ -46,14 +58,45 @@ public class CategoryActivity extends AppCompatActivity {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                startActivity(new Intent(CategoryActivity.this, DashboardAdminActivity.class));
+                finish();
+            }
+        });
+    }
+
+    private void loadCategory() {
+        //init arrayList
+        categoryArrayList = new ArrayList<>();
+        //get all categories from firebaase > categories
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("categories");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //clear arraylist before adding data into it
+                categoryArrayList.clear();
+                for(DataSnapshot ds: snapshot.getChildren()){
+                    //get data
+                    ModelCategory model = ds.getValue(ModelCategory.class);
+                    //add to arrayList
+                    categoryArrayList.add(model);
+                }
+                //setup adapter
+                adapterCategory = new AdapterCategory(CategoryActivity.this, categoryArrayList);
+                //set adapter to recyclerview
+                binding.categariesRv.setAdapter(adapterCategory);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
 
     private String category = "";
     private void validateData() {
-        category = binding.CategoryEt.getText().toString().trim();
+        category = binding.CategoryEt.getText().toString().toLowerCase().trim();
         if (TextUtils.isEmpty(category)){
             Toast.makeText(this, "Please enter category..!", Toast.LENGTH_SHORT).show();
         }else {
@@ -75,23 +118,38 @@ public class CategoryActivity extends AppCompatActivity {
 
         //add to firebase db... Database Root > Categories > category info
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("categories");
-        ref.child(""+timestamp)
-                .setValue(hashMap)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        progressDialog.dismiss();
-                        Toast.makeText(CategoryActivity.this, "Category Added Successfully...", Toast.LENGTH_SHORT).show();
+        ref.orderByChild("category").equalTo(category).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    progressDialog.dismiss();
+                    Toast.makeText(CategoryActivity.this, "Category already exists in database", Toast.LENGTH_SHORT).show();
+                } else {
+                    ref.child(""+timestamp)
+                            .setValue(hashMap)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(CategoryActivity.this, "Category Added Successfully...", Toast.LENGTH_SHORT).show();
 
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressDialog.dismiss();
-                        Toast.makeText(CategoryActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(CategoryActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 }
