@@ -159,6 +159,7 @@ public class CategoryActivity extends AppCompatActivity {
                                 public void onSuccess(Void unused) {
                                     progressDialog.dismiss();
                                     Toast.makeText(CategoryActivity.this, "Category Added Successfully...", Toast.LENGTH_SHORT).show();
+                                    binding.CategoryEt.setText("");
 
                                 }
                             })

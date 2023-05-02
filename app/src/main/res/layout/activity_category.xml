@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back01"
+    android:background="@drawable/back02"
     tools:context=".admin.CategoryActivity">
 
     <RelativeLayout
@@ -23,24 +23,17 @@
             tools:ignore="InvalidId"
             android:contentDescription="TODO" />
 
-        <ImageView
-            android:id="@+id/iconLogo"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/logo"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iconLogo"
+            android:layout_below="@id/backBtn"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed"
             android:text="Add Category"
             android:textColor="@color/white"
-            android:textSize="28sp"/>
+            android:textSize="40sp"/>
     </RelativeLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -69,35 +62,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 <!--    Add Category Button-->
-    <LinearLayout
-        android:id="@+id/buttonLl"
+    <Button
+        android:id="@+id/addCategoryBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@id/categoryTil">
-        <Button
-            android:id="@+id/addCategoryBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/shape_button01"
-            android:text="Add"
-            android:textColor="@color/white"/>
-        <Button
-            android:id="@+id/searchCategoryBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/shape_button01"
-            android:text="Search"
-            android:textColor="@color/white"/>
-    </LinearLayout>
-
+        android:background="@drawable/shape_button01"
+        android:text="Add"
+        android:textColor="@color/white"
+        android:layout_below="@id/categoryTil"/>
 
 <!--    Categories-->
     <androidx.recyclerview.widget.RecyclerView
@@ -105,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/row_category"
-        android:layout_below="@id/buttonLl"
+        android:layout_below="@id/addCategoryBtn"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
        />
 

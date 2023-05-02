@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.pustakapooja.admin.CategoryActivity;
+import com.example.pustakapooja.admin.PdfAddActivity;
 import com.example.pustakapooja.databinding.ActivityDashboardAdminBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +37,15 @@ public class DashboardAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(DashboardAdminActivity.this, CategoryActivity.class));
+                finish();
+            }
+        });
+
+        //handle click, start pdf add screen
+        binding.addPdfFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DashboardAdminActivity.this, PdfAddActivity.class));
                 finish();
             }
         });
