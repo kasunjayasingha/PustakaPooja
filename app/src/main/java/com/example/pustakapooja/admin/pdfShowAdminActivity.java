@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.pustakapooja.R;
+
 public class pdfShowAdminActivity extends AppCompatActivity {
 
     @Override

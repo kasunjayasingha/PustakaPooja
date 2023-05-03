@@ -153,7 +153,7 @@ public class Register extends AppCompatActivity {
                         //data added to db
                         progressDialog.dismiss();
                         Toast.makeText(Register.this, "Account Created Successfully..", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Register.this, DashboardUserActivity.class));
+                        startActivity(new Intent(Register.this, LoginActivity.class));
                         finish();
 
 
