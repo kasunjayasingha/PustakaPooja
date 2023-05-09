@@ -1,22 +1,25 @@
-package com.example.pustakapooja.admin;
+package com.example.pustakapooja.models;
 
 public class ModelPdf {
     //variable
     String uid, id, title, description, categoryId, url;
+    long timestamp;
 
     //empty contractor, required for firebase
     public ModelPdf() {
 
     }
 
-    public ModelPdf(String uid, String id, String title, String description, String categoryId, String url) {
+    public ModelPdf(String uid, String id, String title, String description, String categoryId, String url ) {
         this.uid = uid;
         this.id = id;
         this.title = title;
         this.description = description;
         this.categoryId = categoryId;
         this.url = url;
+//        this.timestamp = timestamp;
     }
+
     //Getter/setter
     public String getUid() {
         return uid;
@@ -65,4 +68,12 @@ public class ModelPdf {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+//    public void setTimestamp(long timestamp) {
+//        this.timestamp = timestamp;
+//    }
 }

@@ -1,4 +1,4 @@
-package com.example.pustakapooja;
+package com.example.pustakapooja.login_register;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,9 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.pustakapooja.admin.DashboardAdminActivity;
 import com.example.pustakapooja.databinding.ActivityLoginBinding;
+import com.example.pustakapooja.user.DashboardUserActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;

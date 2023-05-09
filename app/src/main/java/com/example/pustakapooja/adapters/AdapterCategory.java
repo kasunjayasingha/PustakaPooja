@@ -1,8 +1,9 @@
-package com.example.pustakapooja.admin;
+package com.example.pustakapooja.adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pustakapooja.admin.pdfShowAdminActivity;
 import com.example.pustakapooja.databinding.RowCategoryBinding;
+import com.example.pustakapooja.filters.FilterCategory;
+import com.example.pustakapooja.models.ModelCategory;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -81,12 +85,18 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Holder
                             }
                         })
                         .show();
-
             }
         });
-
-
-
+        //handle item click, goto pdfListAdminActivity also pass pdf category and categoryId
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, pdfShowAdminActivity.class);
+                intent.putExtra("categoryId",id);
+                intent.putExtra("categoryTitle",category);
+                context.startActivity(intent);
+            }
+        });
     }
 
     private void deleteCategory(ModelCategory model, HolderCategory holder) {

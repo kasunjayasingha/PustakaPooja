@@ -1,4 +1,4 @@
-package com.example.pustakapooja;
+package com.example.pustakapooja.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.pustakapooja.admin.CategoryActivity;
-import com.example.pustakapooja.admin.PdfAddActivity;
+import com.example.pustakapooja.MainActivity;
 import com.example.pustakapooja.databinding.ActivityDashboardAdminBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

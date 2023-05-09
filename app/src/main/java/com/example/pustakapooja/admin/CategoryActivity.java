@@ -12,9 +12,10 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.pustakapooja.DashboardAdminActivity;
-import com.example.pustakapooja.R;
+import com.example.pustakapooja.adapters.AdapterCategory;
+import com.example.pustakapooja.adapters.AdpaterPdfAdmin;
 import com.example.pustakapooja.databinding.ActivityCategoryBinding;
+import com.example.pustakapooja.models.ModelCategory;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +38,7 @@ public class CategoryActivity extends AppCompatActivity {
     private ArrayList<ModelCategory> categoryArrayList;
     //adpter
     private AdapterCategory adapterCategory;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

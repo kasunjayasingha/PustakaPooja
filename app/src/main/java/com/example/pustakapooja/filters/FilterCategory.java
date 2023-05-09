@@ -1,6 +1,9 @@
-package com.example.pustakapooja.admin;
+package com.example.pustakapooja.filters;
 
 import android.widget.Filter;
+
+import com.example.pustakapooja.adapters.AdapterCategory;
+import com.example.pustakapooja.models.ModelCategory;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.pustakapooja;
+package com.example.pustakapooja.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pustakapooja.MainActivity;
 import com.example.pustakapooja.databinding.ActivityDashboardUserBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

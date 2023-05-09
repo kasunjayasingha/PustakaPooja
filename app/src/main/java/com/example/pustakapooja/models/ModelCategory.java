@@ -1,4 +1,4 @@
-package com.example.pustakapooja.admin;
+package com.example.pustakapooja.models;
 
 public class ModelCategory {
     //use same spellings for variables as in firebase

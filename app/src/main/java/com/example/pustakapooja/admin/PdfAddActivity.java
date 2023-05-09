@@ -1,9 +1,5 @@
 package com.example.pustakapooja.admin;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -15,7 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.pustakapooja.DashboardAdminActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.pustakapooja.databinding.ActivityPdfAddBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -183,7 +182,7 @@ public class PdfAddActivity extends AppCompatActivity {
         hashMap.put("description", ""+description);
         hashMap.put("categoryId", ""+selectedCategoryId);
         hashMap.put("url", ""+uploadPdfUrl);
-        hashMap.put("timestamp", ""+timestamp);
+        hashMap.put("timestamp",+timestamp);
 
         //db reference: DB > Books
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Books");

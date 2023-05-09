@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.pustakapooja.databinding.ActivityMainBinding;
+import com.example.pustakapooja.login_register.LoginActivity;
+import com.example.pustakapooja.user.DashboardUserActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button loginBtn, visitBtn;
