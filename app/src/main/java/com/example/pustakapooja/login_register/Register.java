@@ -108,8 +108,7 @@ public class Register extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        Toast.makeText(getApplicationContext(), "WEDa", Toast.LENGTH_SHORT).show();
-                        //account create success now add in firebase reltime database
+                        //account create success now add in firebase realtime database
                         updatUserInfo();
                     }
                 })
@@ -155,8 +154,6 @@ public class Register extends AppCompatActivity {
                         Toast.makeText(Register.this, "Account Created Successfully..", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Register.this, LoginActivity.class));
                         finish();
-
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -73,7 +73,7 @@ public class PdfEditActivity extends AppCompatActivity {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PdfEditActivity.this, pdfShowAdminActivity.class));
+                startActivity(new Intent(PdfEditActivity.this, CategoryActivity.class));
                 finish();
             }
         });
