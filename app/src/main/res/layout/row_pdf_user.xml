@@ -30,7 +30,7 @@
                 tools:ignore="MissingClass" />
 <!--            Progress Bar-->
             <ProgressBar
-                android:id="@+id/progressBarAdmin"
+                android:id="@+id/progressBarUser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </RelativeLayout>
@@ -41,18 +41,16 @@
             android:layout_height="wrap_content"
             android:text="Book Title"
             android:layout_toEndOf="@id/pdfRl"
-            android:layout_toStartOf="@id/moreAdminBtn"
             android:maxLines="1"
             android:paddingStart="5dp"/>
 
         <TextView
-            android:id="@+id/descriptionAdminTv"
+            android:id="@+id/descriptionUserTv"
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Description"
             android:textSize="15sp"
-            android:layout_toStartOf="@id/moreAdminBtn"
             android:layout_toEndOf="@id/pdfRl"
             android:layout_below="@id/titleTv"
             android:maxLines="4"
@@ -61,7 +59,7 @@
             android:ellipsize="end"/>
 
         <TextView
-            android:id="@+id/categoryAdminTv"
+            android:id="@+id/categoryUserTv"
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +71,7 @@
             android:maxLines="1" />
 
         <TextView
-            android:id="@+id/sizeAdminTv"
+            android:id="@+id/sizeUserTv"
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,28 +84,18 @@
             />
 
         <TextView
-            android:id="@+id/dateAdminTv"
+            android:id="@+id/dateUserTv"
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DD/MM/YYYY"
             android:textSize="12sp"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@id/sizeAdminTv"
-            android:layout_toStartOf="@id/categoryAdminTv"
+            android:layout_toEndOf="@id/sizeUserTv"
+            android:layout_toStartOf="@id/categoryUserTv"
             android:textAlignment="center"
             android:maxLines="1"
             android:paddingStart="5dp"/>
-
-        <ImageButton
-            android:id="@+id/moreAdminBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_more_black"
-            android:background="@android:color/transparent"
-            android:layout_alignParentEnd="true"
-            />
-
 
     </RelativeLayout>
 
