@@ -83,19 +83,36 @@
             android:paddingStart="5dp"
             />
 
-        <TextView
-            android:id="@+id/dateUserTv"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DD/MM/YYYY"
-            android:textSize="12sp"
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@id/sizeUserTv"
             android:layout_toStartOf="@id/categoryUserTv"
             android:textAlignment="center"
             android:maxLines="1"
-            android:paddingStart="5dp"/>
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/pagesLableTv"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:paddingStart="3dp"
+                android:text="Pages: "
+                android:textSize="12sp"
+                />
+            <TextView
+                android:id="@+id/pagesCountTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:text="N/A"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
 
     </RelativeLayout>
 

@@ -18,6 +18,7 @@ import com.example.pustakapooja.admin.PdfReadAdminActivity;
 import com.example.pustakapooja.databinding.RowPdfUserBinding;
 import com.example.pustakapooja.filters.FillterPdfUser;
 import com.example.pustakapooja.models.ModelPdf;
+import com.example.pustakapooja.user.PdfReadUserActivity;
 import com.github.barteksc.pdfviewer.PDFView;
 
 import java.util.ArrayList;
@@ -63,23 +64,24 @@ public class AdapterPdfUser extends RecyclerView.Adapter<AdapterPdfUser.HolderPd
         long timestamp = modelPdf.getTimestamp();
 
         //Convert timestamp to dd/mm/yyyy hh:mm am/pm
-        String date = MyApplication.formatTimestamp(timestamp);
+//        String date = MyApplication.formatTimestamp(timestamp);
 
         //set data
         holder.titleTv.setText(title);
         holder.descriptionUserTv.setText(description);
-        holder.dateUserTv.setText(date);
+//        holder.dateUserTv.setText(date);
 
         MyApplication.loadPdfFromUrlSinglePage(""+pdfUrl, ""+title, holder.pdfView, holder.progressBarUser);
         MyApplication.loadCategory(categoryId, holder.categoryUserTv);
         MyApplication.loadPdfSize(""+pdfUrl, ""+title, holder.sizeUserTv);
+        MyApplication.loadPdfPageCount(holder.pdfView, ""+pdfUrl, binding.pagesCountTv);
 
 
 //        handle click show pdf details activity
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PdfReadAdminActivity.class);
+                Intent intent = new Intent(context, PdfReadUserActivity.class);
                 intent.putExtra("bookId", bookId);
                 context.startActivity(intent);
                 
@@ -117,7 +119,7 @@ public class AdapterPdfUser extends RecyclerView.Adapter<AdapterPdfUser.HolderPd
             //init ui views
             titleTv = binding.titleTv;
             descriptionUserTv = binding.descriptionUserTv;
-            dateUserTv = binding.dateUserTv;
+//            dateUserTv = binding.dateUserTv;
             categoryUserTv = binding.categoryUserTv;
             sizeUserTv = binding.sizeUserTv;
             pdfView = binding.pdfView;

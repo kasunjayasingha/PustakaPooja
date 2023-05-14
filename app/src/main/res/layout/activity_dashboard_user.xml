@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@drawable/shape_toolbar02">
 
         <TextView
@@ -19,11 +19,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:text="User-Dashboard"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/subTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/titleTop"
+            android:text="Sub Title"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
 
         <ImageButton
             android:id="@+id/logoutBtn"

@@ -17,6 +17,7 @@ import android.view.View;
 import com.example.pustakapooja.BookUserFragment;
 import com.example.pustakapooja.MainActivity;
 import com.example.pustakapooja.databinding.ActivityDashboardUserBinding;
+import com.example.pustakapooja.login_register.LoginActivity;
 import com.example.pustakapooja.models.ModelCategory;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,11 +49,19 @@ public class DashboardUserActivity extends AppCompatActivity {
         setupViewPagerAdapter(binding.viewPager);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
 
+
         binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 firebaseAuth.signOut();
+
+                if(firebaseUser == null){
+                    startActivity(new Intent(DashboardUserActivity.this, MainActivity.class));
+                    finish();
+                }
                 checkUser();
+
             }
         });
 
@@ -156,15 +165,32 @@ public class DashboardUserActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void checkUser() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseUser == null){
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            //not logged in
+            binding.subTitleTv.setText("Guest");
+
+
         }else {
-            String name = firebaseUser.getDisplayName();
-//            binding.userNameTop.setText(name);
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+            ref.child(firebaseUser.getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String name = ""+snapshot.child("name").getValue();
+                            binding.subTitleTv.setText(name);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
         }
     }
 }
