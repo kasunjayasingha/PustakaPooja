@@ -5,12 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back02"
-    tools:context=".DashboardAdminActivity">
+    tools:context=".admin.DashboardAdminActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_toolbar02">
+
+<!--        Open User profile-->
+        <ImageButton
+            android:id="@+id/userProfileBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_person_white"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"/>
 
         <TextView
             android:id="@+id/titleTop"

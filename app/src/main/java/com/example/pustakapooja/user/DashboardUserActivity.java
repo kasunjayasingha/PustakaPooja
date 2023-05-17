@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.example.pustakapooja.BookUserFragment;
 import com.example.pustakapooja.MainActivity;
+import com.example.pustakapooja.ProfileActivity;
 import com.example.pustakapooja.databinding.ActivityDashboardUserBinding;
 import com.example.pustakapooja.login_register.LoginActivity;
 import com.example.pustakapooja.models.ModelCategory;
@@ -48,6 +49,15 @@ public class DashboardUserActivity extends AppCompatActivity {
         checkUser();
         setupViewPagerAdapter(binding.viewPager);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
+
+        //open user profile
+        binding.userProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DashboardUserActivity.this, ProfileActivity.class));
+                finish();
+            }
+        });
 
 
         binding.logoutBtn.setOnClickListener(new View.OnClickListener() {

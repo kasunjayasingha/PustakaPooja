@@ -13,6 +13,17 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_toolbar02">
 
+<!--        Open User profile-->
+        <ImageButton
+            android:id="@+id/userProfileBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_person_white"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"/>
+
         <TextView
             android:id="@+id/titleTop"
             android:layout_width="wrap_content"
@@ -31,7 +42,7 @@
             android:layout_marginTop="8dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/titleTop"
-            android:text="Sub Title"
+            android:text="Usere Name"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="15sp"/>
@@ -54,14 +65,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbarRl"
-        android:layout_margin="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/transparent"
         app:tabBackground="@drawable/tab_selector"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="0dp"
         app:tabMode="scrollable"
-        app:tabUnboundedRipple="false"
-        />
+        app:tabUnboundedRipple="false" />
 
 <!--    ViewPage: swipe/ show/ Change fragments-->
     <androidx.viewpager.widget.ViewPager

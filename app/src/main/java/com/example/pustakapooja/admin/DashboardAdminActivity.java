@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.pustakapooja.MainActivity;
+import com.example.pustakapooja.ProfileActivity;
 import com.example.pustakapooja.databinding.ActivityDashboardAdminBinding;
+import com.example.pustakapooja.user.DashboardUserActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -36,6 +38,15 @@ public class DashboardAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(DashboardAdminActivity.this, CategoryActivity.class));
+                finish();
+            }
+        });
+
+        //open user profile
+        binding.userProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DashboardAdminActivity.this, ProfileActivity.class));
                 finish();
             }
         });
