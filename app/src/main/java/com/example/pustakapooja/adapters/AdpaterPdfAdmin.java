@@ -60,6 +60,7 @@ public class AdpaterPdfAdmin extends RecyclerView.Adapter<AdpaterPdfAdmin.Holder
     private static final String TAG = "PDF_ADAPTER_TAG";
 
     private ProgressDialog progressDialog;
+    String pdfId;
 
     public AdpaterPdfAdmin(Context context, ArrayList<ModelPdf> pdfArrayList) {
         this.context = context;
@@ -86,26 +87,36 @@ public class AdpaterPdfAdmin extends RecyclerView.Adapter<AdpaterPdfAdmin.Holder
 
         //get data
         ModelPdf model = pdfArrayList.get(position);
-        String pdfId = model.getId();
-        String categoryId = model.getCategoryId();
-        String pdfUrl = model.getUrl();
-        String title = model.getTitle();
-        String description = model.getDescription();
-        long timestamp = model.getTimestamp();
 
-        //convert timestamp to dd/mm/yyyy
-        String formattedDate = MyApplication.formatTimestamp(timestamp);
+        if (model != null) {
+            pdfId = model.getId();
+            String categoryId = model.getCategoryId();
+            String pdfUrl = model.getUrl();
+            String title = model.getTitle();
+            String description = model.getDescription();
+            long timestamp = model.getTimestamp();
 
-        //set data
-        holder.titleTv.setText(title);
-        holder.descriptionAdminTv.setText(description);
-        holder.dateAdminTv.setText(formattedDate);
+            //convert timestamp to dd/mm/yyyy
+            String formattedDate = MyApplication.formatTimestamp(timestamp);
+
+            //set data
+            holder.titleTv.setText(title);
+            holder.descriptionAdminTv.setText(description);
+            holder.dateAdminTv.setText(formattedDate);
 
 
-        //load further details like category, pdf from url, pdf size in separate functions.
-        MyApplication.loadCategory(""+categoryId, holder.categoryAdminTv);
-        MyApplication.loadPdfFromUrlSinglePage(""+pdfUrl, ""+title, holder.pdfView, holder.progressBarAdmin);
-        MyApplication.loadPdfSize(""+pdfUrl, ""+title, holder.sizeAdminTv);
+            //load further details like category, pdf from url, pdf size in separate functions.
+            MyApplication.loadCategory(""+categoryId, holder.categoryAdminTv);
+            MyApplication.loadPdfFromUrlSinglePage(""+pdfUrl, ""+title, holder.pdfView, holder.progressBarAdmin);
+            MyApplication.loadPdfSize(""+pdfUrl, ""+title, holder.sizeAdminTv);
+
+
+
+            // Rest of the code...
+        } else {
+            // Handle the case when the modelPdf object is null
+            // You can log an error message or perform any necessary action
+        }
 
         //handel click, show dialog with option 1) Edi, 2) Delete
         holder.moreAdminBtn.setOnClickListener(new View.OnClickListener() {

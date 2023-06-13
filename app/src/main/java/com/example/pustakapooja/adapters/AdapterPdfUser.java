@@ -56,39 +56,50 @@ public class AdapterPdfUser extends RecyclerView.Adapter<AdapterPdfUser.HolderPd
 
         //get data
         ModelPdf modelPdf = pdfArrayList.get(position);
-        String bookId = modelPdf.getId();
-        String title = modelPdf.getTitle();
-        String description = modelPdf.getDescription();
-        String pdfUrl = modelPdf.getUrl();
-        String categoryId = modelPdf.getCategoryId();
-        long timestamp = modelPdf.getTimestamp();
+        if (modelPdf != null) {
+            // The modelPdf object is not null, proceed with accessing its properties
+
+            String bookId = modelPdf.getId();
+            String title = modelPdf.getTitle();
+            String description = modelPdf.getDescription();
+            String pdfUrl = modelPdf.getUrl();
+            String categoryId = modelPdf.getCategoryId();
+            long timestamp = modelPdf.getTimestamp();
+
+            //set data
+            holder.titleTv.setText(title);
+            holder.descriptionUserTv.setText(description);
+//        holder.dateUserTv.setText(date);
+
+            MyApplication.loadPdfFromUrlSinglePage(""+pdfUrl, ""+title, holder.pdfView, holder.progressBarUser);
+            MyApplication.loadCategory(categoryId, holder.categoryUserTv);
+            MyApplication.loadPdfSize(""+pdfUrl, ""+title, holder.sizeUserTv);
+            MyApplication.loadPdfPageCount(holder.pdfView, ""+pdfUrl, binding.pagesCountTv);
+
+
+//        handle click show pdf details activity
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, PdfReadUserActivity.class);
+                    intent.putExtra("bookId", bookId);
+                    context.startActivity(intent);
+
+
+
+                }
+            });
+
+            // Rest of the code...
+        } else {
+            // Handle the case when the modelPdf object is null
+            // You can log an error message or perform any necessary action
+        }
 
         //Convert timestamp to dd/mm/yyyy hh:mm am/pm
 //        String date = MyApplication.formatTimestamp(timestamp);
 
-        //set data
-        holder.titleTv.setText(title);
-        holder.descriptionUserTv.setText(description);
-//        holder.dateUserTv.setText(date);
 
-        MyApplication.loadPdfFromUrlSinglePage(""+pdfUrl, ""+title, holder.pdfView, holder.progressBarUser);
-        MyApplication.loadCategory(categoryId, holder.categoryUserTv);
-        MyApplication.loadPdfSize(""+pdfUrl, ""+title, holder.sizeUserTv);
-        MyApplication.loadPdfPageCount(holder.pdfView, ""+pdfUrl, binding.pagesCountTv);
-
-
-//        handle click show pdf details activity
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, PdfReadUserActivity.class);
-                intent.putExtra("bookId", bookId);
-                context.startActivity(intent);
-                
-
-
-            }
-        });
         
 
 

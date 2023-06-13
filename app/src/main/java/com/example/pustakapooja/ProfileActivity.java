@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.pustakapooja.adapters.AdapterPdfUser;
 import com.example.pustakapooja.adapters.AdpaterPdfAdmin;
+import com.example.pustakapooja.admin.DashboardAdminActivity;
 import com.example.pustakapooja.admin.pdfShowAdminActivity;
 import com.example.pustakapooja.databinding.ActivityDashboardUserBinding;
 import com.example.pustakapooja.databinding.ActivityProfileBinding;
@@ -22,6 +23,7 @@ import com.example.pustakapooja.models.ModelPdf;
 import com.example.pustakapooja.user.DashboardUserActivity;
 import com.example.pustakapooja.user.PdfReadUserActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -60,8 +62,33 @@ public class ProfileActivity extends AppCompatActivity {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ProfileActivity.this, DashboardUserActivity.class));
-                finish();
+                //Check in db
+                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+                ref.child(firebaseUser.getUid())
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+
+                                //get usertype
+                                String userType = ""+snapshot.child("userType").getValue();
+                                //check user Type
+                                if(userType.equals("user")){
+                                    startActivity(new Intent(ProfileActivity.this, DashboardUserActivity.class));
+                                    finish();
+                                } else if (userType.equals("admin")) {
+                                    startActivity(new Intent(ProfileActivity.this, DashboardAdminActivity.class));
+                                    finish();
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+
+                            }
+                        });
+
             }
         });
     }
