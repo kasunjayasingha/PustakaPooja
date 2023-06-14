@@ -15,7 +15,16 @@ The Buddhism Libri app is a mobile application developed to provide a digital li
 
 # USER INTERFACES
 
-image.png
-PrimaryLogo-TriColour.png
-
-![alt text](/app/src/main/res/drawable/mainlogo.png "Logo Title Text 1")
+![Start Screen](/app/src/main/assets/img.png "Start Screen")
+![Login Screen](/app/src/main/assets/img_2.png "Login Screen")
+![Register Screen](/app/src/main/assets/img_3.png "Register Screen")
+![Forget Password](/app/src/main/assets/img_4.png "Forget Password")
+![Admin Dashboard](/app/src/main/assets/img_5.png "Admin Dashboard")
+![Profile](/app/src/main/assets/img_6.png "Profile")
+![Edit Profile](/app/src/main/assets/img_7.png "Edit Profile")
+![Add Category](/app/src/main/assets/img_10.png "Add Category")
+![Add Book](/app/src/main/assets/img_9.png "Add Book")
+![show books for admin](/app/src/main/assets/img_8.png "show books for admin")
+![Book edit 0r delete](/app/src/main/assets/img_11.png "Book edit 0r delete")
+![Book edit](/app/src/main/assets/img_12.png "Book edit")
+![User Dashboard](/app/src/main/assets/img_13.png "User Dashboard")
