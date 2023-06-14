@@ -17,4 +17,5 @@ The Buddhism Libri app is a mobile application developed to provide a digital li
 
 image.png
 PrimaryLogo-TriColour.png
-../app/src/main/res/drawable/back01.png
+
+![alt text](../app/src/main/res/drawable/back01.png)
